@@ -14,8 +14,8 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    public void toSetAlarm(View view){
 
+    public void toSetAlarm(View view){
         Intent setAlarm = new Intent(getApplicationContext(), AlarmActivity.class);
 
         startActivity(setAlarm);
