@@ -86,6 +86,17 @@ public class AlarmActivity extends AppCompatActivity {
         setAlarm();
 
 
+
+
+
+
+
+
+
+
+
+
+
     }
 
     //sets the alarm
