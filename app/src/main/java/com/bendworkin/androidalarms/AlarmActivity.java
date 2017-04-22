@@ -14,8 +14,10 @@ import android.icu.text.SimpleDateFormat;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -47,6 +49,7 @@ public class AlarmActivity extends AppCompatActivity {
     LocationManager locationManager;
     LocationListener locationListener;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void setAlarmNow(View view){
 
         date = dateTxt.getText().toString();
@@ -213,8 +216,8 @@ public class AlarmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alarm);
 
         setAlarmButton = (Button)findViewById(R.id.alarmButton);
-        dateTxt = (EditText) findViewById(R.id.date);
-        timeTxt = (EditText) findViewById(R.id.timeText);
+        //dateTxt = (EditText) findViewById(R.id.date);
+        //timeTxt = (EditText) findViewById(R.id.timeText);
         msgTxt = (EditText) findViewById(R.id.alarmMsg);
 
 

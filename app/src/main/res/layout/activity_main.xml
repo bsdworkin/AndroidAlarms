@@ -53,7 +53,8 @@
             android:textStyle="normal|bold"
             android:textSize="18sp"
             android:textColor="@color/colorPrimary"
-            android:layout_weight="0.07" />
+            android:layout_weight="0.07"
+            android:onClick="toSetTimer" />
 
         <Button
             android:text="Add New Location Timer"
@@ -64,7 +65,8 @@
             android:textColor="@color/colorPrimary"
             android:textStyle="normal|bold"
             android:textSize="18sp"
-            android:layout_weight="0.06" />
+            android:layout_weight="0.06"
+            android:onClick="toLocationAlarm" />
 
         <TextView
             android:text="By: Ben Dworkin, Brandon Manke, and  Colin Koepke"
