@@ -25,9 +25,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
+
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -38,6 +41,8 @@ public class AlarmActivity extends AppCompatActivity {
     private Button setAlarmButton;
     private EditText dateTxt;
     private EditText timeTxt;
+    private TimePicker timerPicker;
+    private DatePicker datePicker;
     private EditText msgTxt;
     private String date;
     private String time;
@@ -216,9 +221,9 @@ public class AlarmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alarm);
 
         setAlarmButton = (Button)findViewById(R.id.alarmButton);
-        //dateTxt = (EditText) findViewById(R.id.date);
-        //timeTxt = (EditText) findViewById(R.id.timeText);
         msgTxt = (EditText) findViewById(R.id.alarmMsg);
+        timerPicker = (TimePicker) findViewById(R.id.timePicker);
+        datePicker = (DatePicker) findViewById(R.id.datePicker);
 
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
