@@ -51,26 +51,31 @@ public class AlarmActivity extends AppCompatActivity {
     private Date toDate;
     private Date toTime;
 
+    private int month;
+    private int day;
+    private int year;
+    private int hour;
+    private int minute;
+
+
     LocationManager locationManager;
     LocationListener locationListener;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void setAlarmNow(View view){
 
-        date = dateTxt.getText().toString();
-        time = timeTxt.getText().toString();
         alarmMsg = msgTxt.getText().toString();
 
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        DateFormat tf = new SimpleDateFormat("hh:mm:ss a");
+        /*DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        DateFormat tf = new SimpleDateFormat("hh:mm:ss a"); */
 
         //parse the date
-        try {
+        /*try {
             this.toDate = df.parse(date);
             this.toTime = tf.parse(time);
         } catch (ParseException e) {
             e.printStackTrace();
-        }
+        } */
 
         //Checking to see if we asked for location permission
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -92,19 +97,6 @@ public class AlarmActivity extends AppCompatActivity {
 
         //call function to set alarm
         setAlarm();
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     //sets the alarm
@@ -125,16 +117,16 @@ public class AlarmActivity extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(System.currentTimeMillis());
 
-            /*String[] dateSplit = date.split("/");
-            String[] timeSplit = time.split(":");
 
-            int month = Integer.parseInt(dateSplit[0]);
-            int day = Integer.parseInt(dateSplit[1]);
-            int year = Integer.parseInt(dateSplit[2]);
+        Calendar cal2 = Calendar.getInstance();
+        cal.setTimeInMillis(System.currentTimeMillis());
 
-            int hour = Integer.parseInt(timeSplit[0]);
-            int minute = Integer.parseInt(timeSplit[1]);
-            int second = Integer.parseInt(timeSplit[2]);
+            month = datePicker.getMonth();
+            day = datePicker.getDayOfMonth();
+            year = datePicker.getYear();
+
+            hour = timerPicker.getHour();
+            minute = timerPicker.getMinute();
 
             cal.set(Calendar.MONTH, month);
             cal.set(Calendar.DAY_OF_MONTH, day);
@@ -142,29 +134,22 @@ public class AlarmActivity extends AppCompatActivity {
 
             cal.set(Calendar.HOUR_OF_DAY, hour);
             cal.set(Calendar.MINUTE, minute);
-            cal.set(Calendar.SECOND, second);
+            cal.set(Calendar.SECOND, 0);
             cal.set(Calendar.MILLISECOND, 0);
 
 
+        //Date finalDate = new Date();
+        //finalDate.setTime(toDate.getTime() + toTime.getTime() - 21600000);
 
-            Toast.makeText(getApplicationContext(), Long.toString(cal.getTimeInMillis()), Toast.LENGTH_LONG).show();
-            */
-
-
-
-        Date finalDate = new Date();
-        finalDate.setTime(toDate.getTime() + toTime.getTime() - 21600000);
-
-        long testLong = finalDate.getTime() - cal.getTimeInMillis();
+        long testLong = cal.getTimeInMillis() - cal2.getTimeInMillis();
 
 
 
         // set alarm to fire 5 sec (1000*5) from now (SystemClock.elapsedRealtime())
         manager.set( AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + testLong, pintent );
-        //Toast.makeText(getApplicationContext(), toDate.toString(), Toast.LENGTH_SHORT).show();
-        //Toast.makeText(getApplicationContext(), toTime.toString(), Toast.LENGTH_LONG).show();
 
         Toast.makeText(getApplicationContext(), Long.toString(testLong), Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "ALARM IS SET", Toast.LENGTH_LONG).show();
 
 
 
